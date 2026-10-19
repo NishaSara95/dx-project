@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Opportunity Search" icon-name="standard:opportunity">
+        <div class="slds-var-p-around_small">
+            <lightning-input
+                type="search"
+                label="Search by opportunity name"
+                onchange={handleChange}>
+            </lightning-input>
+        </div>
+
+        <template lwc:if={oppList}>
+            <lightning-datatable
+                key-field="Id"
+                data={oppList}
+                columns={col}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </template>
+
+        <template lwc:if={error}>
+            <p class="slds-var-p-around_small slds-text-color_error">
+                Something went wrong loading Opportunities. Check the browser console.
+            </p>
+        </template>
+    </lightning-card>
+</template>
